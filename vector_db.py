@@ -1,5 +1,6 @@
 import os
 import csv
+import numpy as np
 from openai import OpenAI
 
 openAIclient = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
@@ -32,3 +33,9 @@ def load(file_path):
             vec_db.append(doc)
     
     return vec_db
+
+
+def cosine_similarity(v1,v2):
+    v1_norm = np.sqrt(np.sum(np.square(v1)))
+    v2_norm = np.sqrt(np.sum(np.square(v2)))
+    return np.dot(v1,v2)/(v1_norm*v2_norm)
