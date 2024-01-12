@@ -44,3 +44,13 @@ def cosine_similarity(v1,v2):
     v1_norm = np.sqrt(np.sum(np.square(v1)))
     v2_norm = np.sqrt(np.sum(np.square(v2)))
     return np.dot(v1,v2)/(v1_norm*v2_norm)
+
+
+def search(input_vec, db_with_content, idx):
+    
+    result = db_with_content[idx.query(input_vec)[1]]
+    score = cosine_similarity(input_vec, result['vector'])
+
+    final_result = {'id':result['id'], 'score':score, 'question':result['question'], 'answer':result['answer']}
+    
+    return final_result
