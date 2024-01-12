@@ -4,6 +4,9 @@ import numpy as np
 from scipy.spatial import cKDTree
 from openai import OpenAI
 
+from dotenv import load_dotenv
+load_dotenv()
+
 openAIclient = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 def get_embedding(text, model='text-embedding-ada-002'):
