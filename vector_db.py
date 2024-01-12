@@ -1,6 +1,7 @@
 import os
 import csv
 import numpy as np
+from scipy.spatial import cKDTree
 from openai import OpenAI
 
 openAIclient = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
@@ -14,7 +15,8 @@ def get_embedding(text, model='text-embedding-ada-002'):
     return vector
 
 
-def load(file_path):
+def make_vector_db(file_path):
+    vec_db_with_content = []
     vec_db = []
     with open(file_path, 'r', encoding='utf-8') as f:
         csv_f = csv.reader(f)
@@ -30,9 +32,12 @@ def load(file_path):
                     'question' : row[1] ,
                     'answer' : row[2]
             }
-            vec_db.append(doc)
+            vec_db_with_content.append(doc)
+            vec_db.append(vector)
     
-    return vec_db
+    index = cKDTree(vec_db)
+    
+    return vec_db_with_content, index
 
 
 def cosine_similarity(v1,v2):
