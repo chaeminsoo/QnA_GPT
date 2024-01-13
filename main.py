@@ -19,6 +19,7 @@ while cnt < 6:
     result = prompt.take_input(input_question)
     if result.function_call == None:
         print('>>> 도서관과 관련 없는 질문은 하지 말아 주십시오.')
+        print()
     else:
         args = json.loads(result.function_call.arguments)
         # 입력 질문 임베딩
@@ -30,4 +31,5 @@ while cnt < 6:
         # 답변 생성
         response = prompt.make_respense(input_question,search_result['answer'])
         print(">>> ",response)
+        print()
     cnt+=1
