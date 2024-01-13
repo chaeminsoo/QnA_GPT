@@ -36,3 +36,41 @@ def make_respense(q, info, temperature=0, max_tokens=1024):
     )
 
     return respense.choices[0].message.content
+
+
+def take_input(user_input):
+    functions = [
+        {
+            "name":"make_respense",
+            "description":"Generates responses to questions related to the library.",
+            "parameters":{
+                "type":"object",
+                "properties":{
+                    "q" : {
+                        "type": "string",
+                        "description": "The question that asked."
+                    }
+                },
+                "required":["q"]
+            }
+        }
+    ]
+
+    result = openAIclient.chat.completions.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {
+                "role" : "user",
+                "content" : user_input
+            }
+        ],
+        functions=functions,
+        function_call='auto',
+        temperature = 0,
+        max_tokens = 1024
+    )
+
+    return result.choices[0].message
+
+
+
