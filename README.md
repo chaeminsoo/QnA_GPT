@@ -34,6 +34,13 @@ $ pip install -r requirements.txt
 ``` bash
 $ python main.py
 ```
+<br>
+<p align="center"><img width="619" alt="image" src="https://github.com/chaeminsoo/coding_test/assets/79351899/407e42b2-f784-4110-af5b-b09303c9219b"></p>
+<br>
+
+- 입력한 문서(도서관 FAQ)를 기반으로, 질문에 대한 답변을 생성합니다.
+- 입력한 문서에서 찾을 수 없는 내용은 추측하지 않습니다.(RAG)
+- 필요한 경우에만 Vector Search를 합니다. (Function Calling)
 
 ## Details
 - Author : [채민수](https://github.com/chaeminsoo)
