@@ -15,7 +15,7 @@
 - Retrieval Augmented Generation (RAG)
     - 답변을 생성하기 전, 사용자의 요청과 관련된 지식을 Vector DB에서 검색
     - 검색한 지식에 기반하여 답변을 생성
-    - Halluciation(환각) 감소
+    - Hallucination(환각) 감소
 - Vector Seach
     - Vector DB에서 사용자의 요청과 관련된 지식을 검색
     - 효율적인 검색을 위해 K-D Tree 구조 사용
